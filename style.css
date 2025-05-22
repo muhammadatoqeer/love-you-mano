@@ -91,3 +91,424 @@ canvas#confetti {
     pointer-events: none;
     z-index: 1;
 }
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    font-size: 2.2rem;
+    color: #f953c6;
+    animation: float-heart 4s linear forwards;
+    pointer-events: none;
+    z-index: 50;
+}
+
+@keyframes float-heart {
+    0% { opacity: 0.7; transform: scale(1) translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.5) translateY(-110vh); }
+}
+
+.compliment-btn {
+    margin-top: 18px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #f7971e, #ffd200, #f7971e);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.compliment-btn:hover {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+.sparkle {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    z-index: 9999;
+    background: radial-gradient(circle, #fffbe7 60%, #ffd200 100%);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkle-fade 0.7s linear forwards;
+}
+
+@keyframes sparkle-fade {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2); }
+}
+
+.emoji-rain {
+    position: fixed;
+    top: -40px;
+    pointer-events: none;
+    z-index: 60;
+    animation: emoji-fall 4s linear forwards;
+}
+
+@keyframes emoji-fall {
+    0% { opacity: 0.8; transform: translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(110vh); }
+}
+
+.day-night-btn {
+    margin-top: 14px;
+    margin-left: 10px;
+    padding: 10px 22px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #232526, #414345);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.day-night-btn:hover {
+    background: linear-gradient(90deg, #ffd200, #f7971e);
+    color: #232526;
+}
+
+body.night {
+    background: linear-gradient(135deg, #232526 70%, #1a2980 100%);
+    color: #fff;
+}
+
+body.night .container {
+    background: rgba(30,30,40,0.92);
+    color: #fff;
+}
+
+.secret-message {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    background: #fffbe7;
+    color: #ee0979;
+    padding: 22px 40px;
+    border-radius: 30px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    font-size: 1.5rem;
+    z-index: 9999;
+    animation: secret-pop 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes secret-pop {
+    0% { opacity: 0; transform: scale(0.7) translate(-50%, -50%); }
+    100% { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+}
+
+.pulse-yes {
+    animation: pulse-yes 1.2s infinite alternate;
+}
+
+@keyframes pulse-yes {
+    0% { box-shadow: 0 0 0 0 #43e97b55; transform: scale(1); }
+    100% { box-shadow: 0 0 16px 8px #43e97b33; transform: scale(1.08); }
+}
+
+.firework {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 999;
+    animation: firework-burst 1.2s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    pointer-events: none;
+    transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(0);
+}
+
+@keyframes firework-burst {
+    0% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-120px); }
+}
+
+.love-counter {
+    margin-top: 18px;
+    margin-right: 640px;
+    font-size: 1.2rem;
+    color: #ee0979;
+    font-weight: bold;
+    background: #fffbe7cc;
+    border-radius: 20px;
+    padding: 8px 22px;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.bg-burst {
+    position: fixed;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    animation: bg-burst-fade 0.9s linear forwards;
+}
+
+@keyframes bg-burst-fade {
+    0% { opacity: 0.7; }
+    100% { opacity: 0; }
+}
+
+.float-text {
+    position: fixed;
+    font-size: 2.2rem;
+    font-weight: bold;
+    left: 50vw;
+    top: 60vh;
+    pointer-events: none;
+    z-index: 2000;
+    animation: float-text-up 1.8s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+
+@keyframes float-text-up {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-120px) scale(1.3); }
+}
+
+/* 1. Animated Pet Mascot (Cat) */
+.pet-mascot {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 3000;
+    width: 80px;
+    height: 90px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.cat-body {
+    position: relative;
+    width: 80px;
+    height: 90px;
+}
+.cat-ear {
+    position: absolute;
+    width: 22px;
+    height: 28px;
+    background: #f38181;
+    border-radius: 50% 50% 0 0;
+    top: 0;
+}
+.cat-ear.left { left: 2px; transform: rotate(-18deg); }
+.cat-ear.right { right: 2px; transform: rotate(18deg); }
+.cat-face {
+    position: absolute;
+    top: 18px;
+    left: 8px;
+    width: 64px;
+    height: 60px;
+    background: #fffbe7;
+    border-radius: 50%;
+    border: 2px solid #f38181;
+}
+.cat-eye {
+    position: absolute;
+    top: 28px;
+    width: 10px;
+    height: 10px;
+    background: #232526;
+    border-radius: 50%;
+}
+.cat-eye.left { left: 16px; }
+.cat-eye.right { right: 16px; }
+.cat-nose {
+    position: absolute;
+    top: 40px;
+    left: 27px;
+    width: 10px;
+    height: 7px;
+    background: #f7971e;
+    border-radius: 50%;
+}
+.cat-mouth {
+    position: absolute;
+    top: 48px;
+    left: 22px;
+    width: 20px;
+    height: 10px;
+    border-bottom: 2px solid #f38181;
+    border-radius: 0 0 20px 20px;
+}
+.cat-whiskers {
+    position: absolute;
+    top: 44px;
+    width: 18px;
+    height: 2px;
+    background: #f38181;
+}
+.cat-whiskers.left { left: 0; transform: rotate(-10deg); }
+.cat-whiskers.right { right: 0; transform: rotate(10deg); }
+.cat-tail {
+    position: absolute;
+    right: -18px;
+    top: 60px;
+    width: 30px;
+    height: 10px;
+    background: #f38181;
+    border-radius: 20px 40px 40px 20px;
+    transform: rotate(30deg);
+}
+.pet-wave .cat-tail {
+    animation: tail-wave 1.2s ease;
+}
+@keyframes tail-wave {
+    0%,100% { transform: rotate(30deg); }
+    20% { transform: rotate(60deg); }
+    40% { transform: rotate(10deg); }
+    60% { transform: rotate(60deg); }
+    80% { transform: rotate(30deg); }
+}
+.pet-happy .cat-face { box-shadow: 0 0 16px 4px #43e97b55; }
+.pet-sad .cat-face { box-shadow: 0 0 16px 4px #ee097955; }
+
+/* 2. Photo Memory Carousel */
+.photo-btn {
+    margin-top: 14px;
+    margin-left: 10px;
+    padding: 10px 22px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #bbded6, #8ac6d1);
+    color: #232526;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.photo-btn:hover {
+    background: linear-gradient(90deg, #f38181, #f7971e);
+    color: #fff;
+}
+.photo-modal {
+    display: none;
+    position: fixed;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+}
+.photo-modal-content {
+    background: #fffbe7;
+    border-radius: 24px;
+    padding: 24px 32px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    text-align: center;
+    position: relative;
+}
+.close-photo {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    font-size: 2rem;
+    color: #f38181;
+    cursor: pointer;
+}
+.carousel-img {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 12px;
+}
+.carousel-controls button {
+    font-size: 1.3rem;
+    margin: 0 10px;
+    padding: 6px 18px;
+    border-radius: 18px;
+    border: none;
+    background: #f7971e;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.carousel-controls button:hover {
+    background: #43e97b;
+}
+
+/* 3. Handwritten Love Note Modal */
+.note-btn {
+    margin-top: 14px;
+    margin-left: 10px;
+    padding: 10px 22px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #f953c6, #ffd200);
+    color: #232526;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.note-btn:hover {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+    color: #fff;
+}
+.note-modal {
+    display: none;
+    position: fixed;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+}
+.note-modal-content {
+    background: #fffbe7;
+    border-radius: 24px;
+    padding: 24px 32px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    text-align: center;
+    position: relative;
+    font-family: 'Indie Flower', 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1.3rem;
+}
+.close-note {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    font-size: 2rem;
+    color: #f38181;
+    cursor: pointer;
+}
+
+/* 4. Animated Balloons */
+.balloon {
+    position: fixed;
+    bottom: -60px;
+    width: 36px;
+    height: 48px;
+    border-radius: 18px 18px 18px 18px / 28px 28px 18px 18px;
+    background: linear-gradient(135deg, #ffd200, #f7971e);
+    box-shadow: 0 2px 8px #f7971e55;
+    z-index: 1000;
+    animation: balloon-float 5s linear forwards;
+}
+@keyframes balloon-float {
+    0% { opacity: 0.8; transform: translateY(0) scale(1); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-110vh) scale(1.1); }
+}
+
+/* 5. Personalized Greeting */
+.personal-greeting {
+    font-size: 1.3rem;
+    color: #43e97b;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
