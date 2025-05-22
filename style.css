@@ -262,10 +262,11 @@ body.night .container {
 
 .float-text {
     position: fixed;
+    margin-top: 90vh Impo !important;
     font-size: 2.2rem;
     font-weight: bold;
     left: 50vw;
-    top: 60vh;
+    top: 75vh;
     pointer-events: none;
     z-index: 2000;
     animation: float-text-up 1.8s cubic-bezier(.68,-0.55,.27,1.55) forwards;
