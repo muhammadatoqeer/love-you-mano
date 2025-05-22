@@ -619,6 +619,12 @@ function burstBackground() {
     const burst = document.createElement('div');
     burst.className = 'bg-burst';
     burst.style.background = `radial-gradient(circle at ${Math.random()*100}% ${Math.random()*100}%, #${Math.floor(Math.random()*16777215).toString(16)} 0%, transparent 80%)`;
+    burst.style.left = (Math.random() * 80 + 10) + 'vw';
+    burst.style.top = (Math.random() * 40 + 40) + 'vh';
+    burst.style.transform = 'translate(-50%, -50%)';
+    burst.style.position = 'fixed';
+    burst.style.pointerEvents = 'none';
+    burst.style.zIndex = 170;
     document.body.appendChild(burst);
     setTimeout(() => burst.remove(), 900);
 }
@@ -626,14 +632,14 @@ yesBtn.addEventListener('click', burstBackground);
 
 // Floating animated text on YES
 function floatText() {
-    const texts = ['I ❤️ U', 'So Cute!', 'Forever!', 'XOXO', '💖', '😍', '🥰', 'You + Me'];
+    const texts = ['I ❤️ U', 'So Cute!', 'Forever!', 'XOXO', 'You + Me', 'Meri Mano Billi'];
     const colors = ['#ff6a00', '#ee0979', '#00c3ff', '#f7971e', '#a8ff78', '#f953c6', '#43e97b', '#ffd200'];
     const txt = document.createElement('div');
     txt.className = 'float-text';
     txt.textContent = texts[Math.floor(Math.random() * texts.length)];
     txt.style.left = (40 + Math.random() * 20) + 'vw';
-    txt.style.top = (60 + Math.random() * 10) + 'vh';
-    txt.style.color = colors[Math.floor(Math.random() * colors.length)]; // Set random color
+    txt.style.top = (75 + Math.random() * 10) + 'vh'; // Lowered position
+    txt.style.color = colors[Math.floor(Math.random() * colors.length)];
     document.body.appendChild(txt);
     setTimeout(() => txt.remove(), 1800);
 }
@@ -649,4 +655,203 @@ yesBtn.addEventListener('click', () => {
         for (let i = 0; i < 40; i++) setTimeout(spawnFloatingHeart, i * 60);
         yesClickTimes = [];
     }
+});
+
+// Cat mascot with waving hand
+function createCatMascot() {
+    const cat = document.createElement('div');
+    cat.className = 'pet-mascot';
+    cat.innerHTML = `
+        <svg width="80" height="90" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <!-- Body -->
+                <ellipse cx="40" cy="65" rx="28" ry="22" fill="#f9b872"/>
+                <!-- Head -->
+                <ellipse cx="40" cy="38" rx="22" ry="20" fill="#f9b872"/>
+                <!-- Left Ear -->
+                <polygon points="18,28 10,10 28,22" fill="#f9b872"/>
+                <!-- Right Ear -->
+                <polygon points="62,28 70,10 52,22" fill="#f9b872"/>
+                <!-- Face -->
+                <ellipse cx="40" cy="42" rx="14" ry="12" fill="#fff"/>
+                <!-- Eyes -->
+                <ellipse cx="34" cy="42" rx="2.2" ry="2.8" fill="#333"/>
+                <ellipse cx="46" cy="42" rx="2.2" ry="2.8" fill="#333"/>
+                <!-- Nose -->
+                <ellipse cx="40" cy="47" rx="1.5" ry="1" fill="#f38181"/>
+                <!-- Smile -->
+                <path d="M36 51 Q40 54 44 51" stroke="#333" stroke-width="1.2" fill="none"/>
+                <!-- Left Paw (waving) -->
+                <g class="cat-paw-group">
+                    <ellipse class="cat-paw" cx="18" cy="70" rx="7" ry="4" fill="#f9b872"/>
+                </g>
+                <!-- Right Paw -->
+                <ellipse cx="62" cy="70" rx="7" ry="4" fill="#f9b872"/>
+                <!-- Cheek blush -->
+                <ellipse cx="30" cy="48" rx="2.5" ry="1.2" fill="#f38181" opacity="0.5"/>
+                <ellipse cx="50" cy="48" rx="2.5" ry="1.2" fill="#f38181" opacity="0.5"/>
+                <!-- Outline -->
+                <ellipse cx="40" cy="38" rx="22" ry="20" fill="none" stroke="#a97c50" stroke-width="2"/>
+                <ellipse cx="40" cy="65" rx="28" ry="22" fill="none" stroke="#a97c50" stroke-width="2"/>
+                <polygon points="18,28 10,10 28,22" fill="none" stroke="#a97c50" stroke-width="2"/>
+                <polygon points="62,28 70,10 52,22" fill="none" stroke="#a97c50" stroke-width="2"/>
+            </g>
+        </svg>
+    `;
+    cat.title = 'Click me!';
+    cat.style.left = '24px';
+    cat.style.bottom = '24px';
+    cat.style.position = 'fixed';
+    cat.style.zIndex = 3000;
+    cat.style.cursor = 'pointer';
+    document.body.appendChild(cat);
+
+    // Waving animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+    .pet-mascot { transition: transform 0.2s; }
+    .pet-mascot svg { display: block; }
+    .cat-paw-group { transform-origin: 18px 70px; animation: cat-wave 1.2s infinite alternate; }
+    @keyframes cat-wave {
+        0% { transform: rotate(-10deg); }
+        100% { transform: rotate(30deg); }
+    }
+    `;
+    document.head.appendChild(style);
+
+    // Click event for greeting
+    cat.addEventListener('click', () => {
+        const now = new Date();
+        const hour = now.getHours();
+        let greeting = 'Good Morning';
+        if (hour >= 12 && hour < 18) greeting = 'Good Afternoon';
+        else if (hour >= 18 || hour < 5) greeting = 'Good Evening';
+        const msg = `${greeting} Mano jee. Momu loves you so much 💖`;
+        showCatGreeting(msg);
+    });
+}
+
+function showCatGreeting(msg) {
+    const div = document.createElement('div');
+    div.className = 'cat-greeting';
+    div.textContent = msg;
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 3500);
+}
+
+// Cat greeting style
+const catGreetingStyle = document.createElement('style');
+catGreetingStyle.innerHTML = `
+.cat-greeting {
+    position: fixed;
+    left: 120px;
+    bottom: 60px;
+    background: rgba(255,255,255,0.97);
+    color: #333;
+    font-size: 1.25rem;
+    padding: 16px 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    z-index: 3100;
+    animation: cat-greet-in 0.4s;
+}
+@keyframes cat-greet-in {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+`;
+document.head.appendChild(catGreetingStyle);
+
+// Smoke trail on cursor
+function createSmoke(x, y) {
+    const smoke = document.createElement('div');
+    smoke.className = 'smoke-trail';
+    smoke.style.left = x + 'px';
+    smoke.style.top = y + 'px';
+    document.body.appendChild(smoke);
+    setTimeout(() => smoke.remove(), 1200);
+}
+document.addEventListener('mousemove', e => {
+    if (Math.random() < 0.5) createSmoke(e.clientX, e.clientY);
+});
+
+// Smoke trail CSS
+const smokeStyle = document.createElement('style');
+smokeStyle.innerHTML = `
+.smoke-trail {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 145;
+    opacity: 0.7;
+    background: radial-gradient(circle, #bbb 0%, #fff 60%, transparent 100%);
+    border-radius: 50%;
+    animation: smoke-fade 1.2s forwards;
+    filter: blur(1.5px);
+}
+@keyframes smoke-fade {
+    0% { opacity: 0.7; transform: scale(1) translateY(0); }
+    60% { opacity: 0.5; transform: scale(1.2) translateY(-10px); }
+    100% { opacity: 0; transform: scale(1.5) translateY(-30px); }
+}
+`;
+document.head.appendChild(smokeStyle);
+
+// Spread random love message on click anywhere
+const spreadMessages = [
+    'Love you 💖',
+    "You\'re the best mano billa!",
+    'You make me smile!',
+    'Momu loves you!',
+    'You are my sunshine ☀️',
+    'So precious!',
+    'You + Me = 💖',
+    'Cutest ever!',
+    'Always in my heart!',
+    'My favorite person!'
+];
+function spreadLoveMessage(x, y) {
+    const msg = document.createElement('div');
+    msg.className = 'spread-love-msg';
+    msg.textContent = spreadMessages[Math.floor(Math.random() * spreadMessages.length)];
+    msg.style.left = x + 'px';
+    msg.style.top = y + 'px';
+    msg.style.color = randomColor();
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 1600);
+}
+document.addEventListener('click', e => {
+    // Avoid triggering on buttons or input elements
+    if (e.target.closest('button, input, .compliment-btn, .pet-mascot')) return;
+    spreadLoveMessage(e.clientX, e.clientY);
+});
+
+// Spread love message CSS
+const spreadMsgStyle = document.createElement('style');
+spreadMsgStyle.innerHTML = `
+.spread-love-msg {
+    position: fixed;
+    font-size: 1.3rem;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 2001;
+    opacity: 1;
+    animation: spread-love-float 1.6s forwards;
+    user-select: none;
+    text-shadow: 0 2px 8px #fff, 0 0 2px #f38181;
+}
+@keyframes spread-love-float {
+    0% { opacity: 1; transform: scale(1) translateY(0); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.3) translateY(-60px); }
+}
+`;
+document.head.appendChild(spreadMsgStyle);
+
+// Add mascot on DOMContentLoaded (move to end of file to ensure DOM is ready)
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(createCatMascot, 0);
 });
