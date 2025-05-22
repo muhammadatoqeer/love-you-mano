@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffb6b9, #fae3d9, #bbded6, #8ac6d1, #f38181);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.container {
+    background: rgba(255,255,255,0.85);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 40px 60px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.rainbow-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #f7971e, #a8ff78, #f953c6, #43e97b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 2s linear infinite;
+}
+
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.button-group {
+    margin: 30px 0;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 18px 40px;
+    margin: 0 20px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #f7971e, #ffd200, #f7971e);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(.68,-0.55,.27,1.55);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+button#yesBtn {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+button#noBtn {
+    background: linear-gradient(90deg, #ee0979, #ff6a00);
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    color: #f38181;
+    min-height: 40px;
+}
+
+#popup {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    background: #fffbe7;
+    color: #ff6a00;
+    padding: 15px 30px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
+    display: none;
+    z-index: 10;
+}
+
+canvas#confetti {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+}
